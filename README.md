@@ -1,4 +1,4 @@
-# smeerws-Randomness
+# iwag-Randomness
 
 Dev-platform: Win 10, Unity Version: 2018.2.14f1, Visual Studio Version: VS Community 2017, 15.3.9;
 Target platform: Standalone (Ref Res: 1024 x 768)

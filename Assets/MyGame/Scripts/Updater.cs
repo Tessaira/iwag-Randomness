@@ -5,8 +5,8 @@ using UnityEngine.UI;
 
 public class Updater : MonoBehaviour {
 
-    public Text text;
-    public string inputtext;
+    [SerializeField] Text text; //doesn't have to be accessed outside function so changed to private
+    [SerializeField] string inputtext; // see  above
     public GameObject circleColor;
     public Color color;
     public GameObject[] shuffleCircles;
@@ -18,19 +18,19 @@ public class Updater : MonoBehaviour {
     
     private void Start()
     {
-        inputtext = "change text";
+        //deleted bc unnecessary 
 
         colorList = new List<Color> {
             Color.red,
             Color.blue,
-            Color.green
+            Color.green, //missed a comma
             Color.magenta
         };
     }
 
     public void UpdateTextWithInspectorInput()
     {
-        Text.text = inputtext;
+        text.text = inputtext; //changed first text to lowercase so it matches w/ variable
     }
 
     public void UpdateCircleColor()
@@ -39,17 +39,17 @@ public class Updater : MonoBehaviour {
         byte r = (byte)rnd.Next(0, 255);
         byte g = (byte)rnd.Next(0, 255);
         byte b = (byte)rnd.Next(0, 255);
-        byte a = (byte)rnd.Next(0, 255);
+        byte a = 255; //only colours are cycled, not alpha channel
 
         circRenderer.color = new Color32(r, g, b, a);
     }
 	
     public void UpdateObjectPosition()
     {
-        Transform circTransform = circlePosition.GetComponent<Transform>();
+        Transform circleTransform = circlePosition.GetComponent<Transform>(); //changed fro circ to circle for better orientation
         
-        float randomPosX = UnityEngine.Random.Next(5, 433);
-        circTransform.localPosition = new Vector3(randomPosX, circTransform.localPosition.y, circTransform.localPosition.z);
+        float randomPosX = UnityEngine.Random.Range(5, 433);
+        circleTransform.localPosition = new Vector3(randomPosX, circleTransform.localPosition.y, circleTransform.localPosition.z);
     }
 
     public void ShuffleColorsInCircles()
